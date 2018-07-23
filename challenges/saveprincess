@@ -1,0 +1,58 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
+
+public class Point
+{
+    public int x;
+    public int y;
+}
+
+class Solution {
+
+
+    
+static void displayPathtoPrincess(int n, String [] grid)
+{
+        
+    Point botLocation = new Point();
+    Point princessLocation = new Point();
+    
+    for(int i = 0 ; i < n ; i++)
+        for(int j = 0 ; j < n ; j++)
+        {
+            if(grid[i][j]=='m')
+            {
+                botLocation.x = i;
+                botLocation.y = j;
+            }
+            if(grid[i][j]=='p')
+            {
+                princessLocation.x = i;
+                princessLocation.y = j;
+            }
+        }
+    
+    if(botLocation.x == princessLocation.x);
+    else if(botLocation.x > princessLocation.x) Console.WriteLine("UP");
+    else Console.WriteLine("DOWN");
+    
+    if(botLocation.y == princessLocation.y);
+    else if(botLocation.y > princessLocation.y) Console.WriteLine("LEFT");
+    else Console.WriteLine("RIGHT");
+    
+}
+
+static void Main(String[] args) {
+        int m;
+
+        m = int.Parse(Console.ReadLine());
+
+        String[] grid  = new String[m];
+        for(int i=0; i < m; i++) {
+            grid[i] = Console.ReadLine(); 
+        }
+
+        displayPathtoPrincess(m,grid);
+     }
+}
