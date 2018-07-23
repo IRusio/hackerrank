@@ -32,14 +32,35 @@ static void displayPathtoPrincess(int n, String [] grid)
                 princessLocation.y = j;
             }
         }
-    
-    if(botLocation.x == princessLocation.x);
-    else if(botLocation.x > princessLocation.x) Console.WriteLine("UP");
-    else Console.WriteLine("DOWN");
-    
-    if(botLocation.y == princessLocation.y);
-    else if(botLocation.y > princessLocation.y) Console.WriteLine("LEFT");
-    else Console.WriteLine("RIGHT");
+        
+    int x=Math.Abs(botLocation.x-princessLocation.x);
+    int y=Math.Abs(botLocation.y-princessLocation.y);
+    while(x!=0 && y!=0)
+    {
+        if(botLocation.x == princessLocation.x);
+        else if(botLocation.x > princessLocation.x)
+        {
+            Console.WriteLine("UP");
+            x--;
+        }
+        else 
+        {
+            Console.WriteLine("LEFT");
+            x--;
+        }
+        
+        if(botLocation.y == princessLocation.y);
+        else if(botLocation.y > princessLocation.y)
+        {
+            Console.WriteLine("LEFT");
+            y--;
+        }
+        else 
+        {
+            Console.WriteLine("RIGHT");    
+            y--;
+        }
+    }
     
 }
 
