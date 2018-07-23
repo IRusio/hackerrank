@@ -1,0 +1,59 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
+
+public class Point
+{
+    public int x;
+    public int y;
+}
+
+class Solution {
+
+static void nextMove(int n,int r, int c, String [] grid)
+{
+    Point botLocation = new Point();
+    Point princessLocation = new Point();
+    
+    
+     
+        botLocation.x = r;
+        botLocation.y = c;
+            
+    
+    for(int i = 0 ; i < n ; i++)
+        for(int j = 0 ; j < n ; j++)
+        {
+            if(grid[i][j]=='p')
+            {
+                princessLocation.x = i;
+                princessLocation.y = j;
+            }
+        }
+    
+    if(botLocation.x > princessLocation.x) Console.WriteLine("UP");
+    else if(botLocation.x < princessLocation.x) Console.WriteLine("DOWN");
+    
+    else if(botLocation.y < princessLocation.y)Console.WriteLine("RIGHT");
+    else if(botLocation.y > princessLocation.y) Console.WriteLine("LEFT");
+}
+
+static void Main(String[] args) {
+        int n;
+
+        n = int.Parse(Console.ReadLine());
+        String pos;
+        pos = Console.ReadLine();
+        String[] position = pos.Split(' ');
+        int [] int_pos = new int[2];
+        int_pos[0] = Convert.ToInt32(position[0]);
+        int_pos[1] = Convert.ToInt32(position[1]);
+        String[] grid  = new String[n];
+        for(int i=0; i < n; i++) {
+            grid[i] = Console.ReadLine(); 
+        }
+
+        nextMove(n, int_pos[0], int_pos[1], grid);
+
+     }
+}
