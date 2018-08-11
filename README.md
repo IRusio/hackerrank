@@ -1,2 +1,2 @@
 # hackerrank
-solution on tasks with hackerrank.com
+https://www.hackerrank.com/Jakub_Rusek
