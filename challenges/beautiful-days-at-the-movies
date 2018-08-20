@@ -1,0 +1,49 @@
+using System;
+using System.IO;
+
+class Solution {
+    private static int beautifulDays(int firstDay, int LastDay, int divisor) 
+    {
+        int numberOfBeautifulDays = 0;
+        for(int i = firstDay ; i <= LastDay ; i++)
+        {
+            int reversedNumber = ReversingNumber(i);
+            
+            numberOfBeautifulDays+= ((i-reversedNumber)%divisor)==0?1:0;
+        }
+        
+        return numberOfBeautifulDays;
+    }
+    
+    private static int ReversingNumber(int valueToReverse)
+    {
+        int reversedNumber = 0;
+        while(valueToReverse!=0)
+        {
+            int catchNumber = valueToReverse%10;
+            valueToReverse/=10;
+            reversedNumber = 10*reversedNumber + catchNumber;
+        }
+        
+        return reversedNumber;
+        
+    }
+    static void Main(string[] args) {
+        TextWriter textWriter = new StreamWriter(@System.Environment.GetEnvironmentVariable("OUTPUT_PATH"), true);
+
+        string[] ijk = Console.ReadLine().Split(' ');
+
+        int i = Convert.ToInt32(ijk[0]);
+
+        int j = Convert.ToInt32(ijk[1]);
+
+        int k = Convert.ToInt32(ijk[2]);
+
+        int result = beautifulDays(i, j, k);
+
+        textWriter.WriteLine(result);
+
+        textWriter.Flush();
+        textWriter.Close();
+    }
+}
