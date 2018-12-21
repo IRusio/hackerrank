@@ -1,0 +1,44 @@
+using System.Collections.Generic;
+using System.Collections;
+using System.IO;
+using System;
+
+class Solution {
+
+    // Complete the repeatedString function below.
+    static long repeatedString(string template, long wordLength) 
+    {
+        long countOfA = 0;
+        long countAInTemplate = 0;
+        
+        for(int i = 0 ; i < template.Length ; i++)
+            if(template[i] == 'a')
+                countAInTemplate++;
+
+
+        for(int i = 0 ; i < wordLength%template.Length ; i++)
+            if(template[i] == 'a')
+                countOfA++;
+
+
+        countOfA+=countAInTemplate * (long)(wordLength/template.Length);
+        
+
+        return countOfA;
+    }
+
+    static void Main(string[] args) {
+        TextWriter textWriter = new StreamWriter(@System.Environment.GetEnvironmentVariable("OUTPUT_PATH"), true);
+
+        string s = Console.ReadLine();
+
+        long n = Convert.ToInt64(Console.ReadLine());
+
+        long result = repeatedString(s, n);
+
+        textWriter.WriteLine(result);
+
+        textWriter.Flush();
+        textWriter.Close();
+    }
+}
