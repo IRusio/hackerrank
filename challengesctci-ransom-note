@@ -1,0 +1,68 @@
+using System.CodeDom.Compiler;
+using System.Collections.Generic;
+using System.Collections;
+using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
+using System.IO;
+using System.Linq;
+using System.Reflection;
+using System.Runtime.Serialization;
+using System.Text.RegularExpressions;
+using System.Text;
+using System;
+
+class Solution {
+
+    // Complete the checkMagazine function below.
+    static void checkMagazine(string[] magazine, string[] note)
+    {
+        var magazineWords = FindWordsAndCount(magazine);
+        var noteWords = FindWordsAndCount(note);
+
+        bool isCorrect = true;
+
+        foreach(var word in noteWords)
+        {
+            if(!(magazineWords.ContainsKey(word.Key) && magazineWords[word.Key]>=word.Value))
+            {
+                isCorrect = false;
+                break;
+            }
+        }
+        if(isCorrect)
+            Console.WriteLine("Yes");
+        else
+            Console.WriteLine("No");
+
+    }
+
+    static Dictionary<string,int> FindWordsAndCount(string[] text)
+    {
+        Dictionary<string, int> words = new Dictionary<string, int>();
+
+        foreach(var value in text)
+        {
+            if(!words.ContainsKey(value))
+                words[value] = 1;
+            else
+                words[value]++;
+        }
+
+        return words;
+    }
+
+    static void Main(string[] args) {
+        string[] mn = Console.ReadLine().Split(' ');
+
+        int m = Convert.ToInt32(mn[0]);
+
+        int n = Convert.ToInt32(mn[1]);
+
+        string[] magazine = Console.ReadLine().Split(' ');
+
+        string[] note = Console.ReadLine().Split(' ');
+
+        checkMagazine(magazine, note);
+    }
+}
