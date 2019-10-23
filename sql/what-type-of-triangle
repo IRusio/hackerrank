@@ -1,0 +1,16 @@
+SELECT
+    CASE
+        WHEN 
+                    (t.A + t.B) <= t.C 
+                OR  (t.A + t.C) <= t.B
+                OR  (t.B + t.C) <= t.A 
+                    THEN "Not A Triangle"
+        WHEN t.A = t.B AND t.A = t.C THEN "Equilateral"
+
+        WHEN    (t.A = t.B AND t.B != t.c) OR
+                (t.B = t.c AND t.A != t.C) OR 
+                (t.A = t.C AND t.A != t.B) 
+                    THEN "Isosceles"
+        ELSE "Scalene"
+    END
+FROM TRIANGLES as t;
