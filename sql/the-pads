@@ -1,0 +1,14 @@
+SELECT 
+    CASE
+        WHEN oc.Occupation = 'Doctor' THEN oc.Name + '(D)'
+        WHEN oc.Occupation = 'Actor' THEN oc.Name + '(A)' 
+        WHEN oc.Occupation = 'Professor' THEN oc.Name + '(P)'
+        WHEN oc.Occupation = 'Singer' THEN oc.Name + '(S)'
+    END
+FROM OCCUPATIONS as oc ORDER BY oc.Name
+SELECT "There are a total of",
+    COUNT(oc.Occupation),
+    CONCAT(LOWER(oc.Occupation),'s.') 
+FROM OCCUPATIONS AS oc 
+    GROUP BY oc.Occupation 
+    ORDER BY COUNT(oc.Occupation), oc.Occupation
