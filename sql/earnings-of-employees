@@ -1,0 +1,10 @@
+--Solution First
+DECLARE @Val int
+DECLARE @TopEmployeeEarnings int
+SET @Val = (SELECT TOP 1 (months * salary) AS salary FROM Employee ORDER BY salary DESC)
+SET @TopEmployeeEarnings = (SELECT COUNT(employee_id) FROM Employee WHERE (months * salary) = @VAL )
+SELECT @Val AS "how much", @TopEmployeeEarnings as "result";
+
+--Solution Second
+SELECT TOP 1 (salary*months), COUNT(employee_id) FROM employee GROUP BY (salary*months) ORDER BY (salary*months) DESC;
+
